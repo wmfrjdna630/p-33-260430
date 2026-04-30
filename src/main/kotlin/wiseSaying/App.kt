@@ -1,6 +1,9 @@
 package wiseSaying
 
-class App {
+class App(
+    val wiseSayingController: WiseSayingController = WiseSayingController(),
+    val systemController: SystemController = SystemController()
+) {
 
     fun run() {
         var lastId = 0
@@ -12,32 +15,13 @@ class App {
             print("명령) ")
 
             val input = readln()
-            when (input) {
-                "종료" -> {
-                    println("프로그램을 종료합니다.")
-                    break
-                }
+            val rq = Rq(input)
 
-                "등록" -> {
-                    print("명언 : ")
-                    val content = readln()
-                    print("작가 : ")
-                    val author = readln()
-                    val id = ++lastId
-
-                    WiseSaying(id, content, author)
-                        .also { wiseSayings.add(it) }
-
-                    println("${id}번 명언이 등록되었습니다.")
-                }
-
-                "목록" -> {
-                    println("번호 / 작가 / 명언")
-                    println("-".repeat(30))
-                    wiseSayings.reversed().forEach {
-                        println("${it.id}/ ${it.author} / ${it.content}")
-                    }
-                }
+            when (rq.action) {
+                "종료" -> systemController.exit()
+                "등록" -> wiseSayingController.write()
+                "목록" -> wiseSayingController.list()
+                "삭제" -> wiseSayingController.delete(rq)
             }
         }
     }
