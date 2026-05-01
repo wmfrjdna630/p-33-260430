@@ -1,4 +1,8 @@
-package wiseSaying
+package com.back
+
+import com.back.global.Rq
+import com.back.domain.system.controller.SystemController
+import com.back.domain.wiseSaying.controller.WiseSayingController
 
 class App(
     val wiseSayingController: WiseSayingController = WiseSayingController(),
@@ -6,15 +10,13 @@ class App(
 ) {
 
     fun run() {
-        var lastId = 0
-        val wiseSayings = mutableListOf<WiseSaying>()
 
         println("== 명언 앱 ==")
 
         while (true) {
             print("명령) ")
 
-            val input = readln()
+            val input = readln().trim()
             val rq = Rq(input)
 
             when (rq.action) {

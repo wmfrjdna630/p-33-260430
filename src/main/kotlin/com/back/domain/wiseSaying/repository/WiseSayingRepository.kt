@@ -1,4 +1,6 @@
-package wiseSaying
+package com.back.domain.wiseSaying.repository
+
+import com.back.domain.wiseSaying.entity.WiseSaying
 
 class WiseSayingRepository {
 

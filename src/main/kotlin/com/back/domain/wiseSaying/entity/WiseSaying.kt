@@ -1,4 +1,4 @@
-package wiseSaying
+package com.back.domain.wiseSaying.entity
 
 data class WiseSaying(
     var id: Int = 0,

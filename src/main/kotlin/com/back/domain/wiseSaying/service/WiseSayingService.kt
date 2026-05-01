@@ -1,4 +1,7 @@
-package wiseSaying
+package com.back.domain.wiseSaying.service
+
+import com.back.domain.wiseSaying.entity.WiseSaying
+import com.back.domain.wiseSaying.repository.WiseSayingRepository
 
 class WiseSayingService(
     val wiseSayingRepository: WiseSayingRepository = WiseSayingRepository()
