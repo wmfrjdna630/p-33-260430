@@ -1,21 +1,22 @@
 package com.back.domain.wiseSaying.service
 
 import com.back.domain.wiseSaying.entity.WiseSaying
-import com.back.domain.wiseSaying.repository.WiseSayingRepository
+import com.back.domain.wiseSaying.repository.WiseSayingMemRepository
+import com.back.global.SingletonScope
 
 class WiseSayingService(
-    val wiseSayingRepository: WiseSayingRepository = WiseSayingRepository()
+    val wiseSayingMemRepository: WiseSayingMemRepository = SingletonScope.wiseSayingMemRepository
 ) {
 
     fun write(content: String, author: String): WiseSaying =
         WiseSaying(content = content, author = author).also {
-            wiseSayingRepository.save(it)
+            wiseSayingMemRepository.save(it)
         }
 
-    fun findAll() = wiseSayingRepository.findAll()
+    fun findAll() = wiseSayingMemRepository.findAll()
 
     fun findById(id: Int): WiseSaying? =
-        wiseSayingRepository.findById(id)
+        wiseSayingMemRepository.findById(id)
 
-    fun delete(wiseSaying: WiseSaying) = wiseSayingRepository.delete(wiseSaying)
+    fun delete(wiseSaying: WiseSaying) = wiseSayingMemRepository.delete(wiseSaying)
 }

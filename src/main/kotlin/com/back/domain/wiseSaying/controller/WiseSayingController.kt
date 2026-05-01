@@ -2,9 +2,10 @@ package com.back.domain.wiseSaying.controller
 
 import com.back.domain.wiseSaying.service.WiseSayingService
 import com.back.global.Rq
+import com.back.global.SingletonScope
 
 class WiseSayingController(
-    private val wiseSayingService: WiseSayingService = WiseSayingService()
+    val wiseSayingService: WiseSayingService = SingletonScope.wiseSayingService
 ){
 
     fun write() {
